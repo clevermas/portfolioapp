@@ -1,0 +1,27 @@
+.portfolio-project-list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 100%;
+
+
+  app-portfolio-project {
+    display: block;
+    width: 49.5%;
+    margin: .25%;
+  }
+
+  @media (min-width: 610px) {
+    app-portfolio-project {
+      width: 32.5%;
+    }
+  }
+  @media (min-width: 1200px) {
+    app-portfolio-project {
+      width: 24.75%;
+      margin: .125%;
+    }
+  }
+
+}

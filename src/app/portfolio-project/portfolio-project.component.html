@@ -1,0 +1,22 @@
+<div class="portfolio-project" ngClass="{{typeClass}}">
+
+  <div class="project-description">
+    <h1>{{ project.name }}</h1>
+    <p>{{ project.description }}</p>
+    <a routerLink="/" md-raised-button color="primary">Back</a>
+
+    <ng-content select=".project-footer"></ng-content>
+  </div>
+
+  <div
+    *ngIf="type !== 'preview'"
+    class="project-preview">
+    <img src="" [app-img-load]="project?.thumbnails?.large"/>
+  </div>
+
+  <a *ngIf="type === 'preview'"
+     [routerLink]="['/project', project.id]"
+     class="project-preview">
+    <img src="{{ project.thumbnails.medium }}"/>
+  </a>
+</div>

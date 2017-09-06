@@ -1,0 +1,194 @@
+@import './app.theming.scss';
+
+$shutter-bg: map-get($app-primary, 100);
+$shutter-bg-darken: map-get($app-primary, 800);
+
+$app-accent-color: map-get($app-accent, 800);
+$app-accent-darker-color: map-get($app-accent, 700);
+
+.app-root {
+  padding-top: 41px;
+  font-family: Roboto, sans-serif;
+
+  &.hide-spinner {
+    .app-page-loader-spinner {
+      top: -100%;
+    }
+  }
+
+  .app-page-loader-spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+  }
+
+  .app-img-load {
+    opacity: 0;
+
+    &.img-loaded {
+      opacity: 1;
+    }
+  }
+
+  & {
+    [app-page-loader] {
+      opacity: 0;
+      transition: opacity .3s linear;
+    }
+
+    &.page-loaded {
+      [app-page-loader] {
+        opacity: 1;
+      }
+    }
+
+    &.no-transition {
+      [app-page-loader] {
+        transition: none;
+      }
+
+    }
+
+  }
+
+}
+
+.rolling-shutter {
+  position: fixed;
+
+  left: 0;
+  top: calc(-100% + 40px);
+  cursor: pointer;
+
+  transition: top .5s ease-out, background-color .3s ease-out;
+
+  width: 100vw;
+  height: 100vh;
+
+  background-color: $shutter-bg-darken;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+
+  z-index: 100;
+
+  .my-name {
+    font-size: 3em;
+    font-weight: bold;
+    color: #00635b;
+  }
+
+  .slug {
+    font-weight: 300;
+  }
+
+  .hash-tags {
+    i {
+      color: $app-accent-darker-color;
+      font-weight: 300;
+    }
+  }
+
+  .contact {
+    margin: 2em 0;
+    letter-spacing: 1em;
+    padding-left: 16px;
+
+    .fa {
+      display: inline-block;
+      text-decoration: none;
+      transition: color .2s linear;
+
+      &:hover {
+        color: $app-accent-color;
+      }
+
+      &-skype {
+        color: #0078ca;
+      }
+
+      &-envelope {
+        color: $app-accent-darker-color;
+      }
+
+      &-telegram {
+        color: #179cde;
+      }
+    }
+
+    .fa-upwork {
+      width: 3.4em;
+      height: 3.4em;
+      vertical-align: -9px;
+      margin-right: 5px;
+
+      svg {
+        fill: #31900b;
+        transition: fill .2s linear;
+
+        &:hover {
+          fill: $app-accent-color;
+        }
+      }
+
+    }
+  }
+
+  &:focus, &:active {
+    outline: none !important;
+  }
+
+  &:after {
+    content: 'Hire me';
+    text-transform: uppercase;
+    color: #ffffff;
+
+    position: absolute;
+    bottom: 0.5em;
+    left: 50%;
+
+    //border-left: 32px solid transparent;
+    //border-right: 32px solid transparent;
+    //border-top: 32px solid $shutter-bg-darken;
+
+    animation: home-page-rolling-shutter-jump 1s ease-in-out infinite;
+  }
+
+  &:hover:after {
+    animation-duration: .75s;
+  }
+}
+
+.shutter-expanded {
+  overflow-y: hidden;
+  height: 100vh;
+
+  .rolling-shutter {
+    background-color: $shutter-bg;
+
+    top: 0;
+    cursor: default;
+
+    &:after {
+      opacity: 0;
+    }
+  }
+}
+
+@keyframes home-page-rolling-shutter-jump {
+  0% {
+    transform: translate(-50%, 0%);
+  }
+  50% {
+    transform: translate(-50%, -20%);
+  }
+  100% {
+    transform: translate(-50%, 0%);
+  }
+}
