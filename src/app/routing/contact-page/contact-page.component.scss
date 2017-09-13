@@ -1,0 +1,123 @@
+@import '../../app.theming';
+
+$shutter-bg: map-get($app-primary, 100);
+$shutter-bg-darken: map-get($app-primary, 800);
+
+$app-accent-color: map-get($app-accent, 800);
+$app-accent-darker-color: map-get($app-accent, 700);
+
+
+.backdrop {
+  &-preloader {
+    display: none;
+
+    &.img-loaded + .backdrop-image {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+  }
+
+  &-image, &-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &-image {
+    z-index: 1;
+
+    background-image: url('../../../assets/img/contact-backdrop.png');
+    background-size: cover;
+
+    opacity: 0;
+    transition: opacity .3s ease-in-out, scale 4s linear;
+  }
+
+  &-overlay {
+    z-index: 2;
+
+    background: rgba($shutter-bg, .15);
+  }
+}
+
+.contact-page {
+  display: flex;
+
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  text-align: center;
+
+  position: relative;
+  z-index: 2;
+
+  min-height: calc(100vh - 52px);
+
+  color: #ffffff;
+
+  padding-top: 52px;
+
+  .my-name {
+    font-size: 3em;
+    font-weight: bold;
+    color: currentColor;
+    text-transform: uppercase;
+  }
+
+  .slug {
+    font-weight: 300;
+  }
+
+  .hash-tags {
+    i {
+      font-weight: 300;
+    }
+  }
+
+  .contact {
+    margin: 2em 0;
+    letter-spacing: 1em;
+    padding-left: 16px;
+
+    .fa {
+      display: inline-block;
+      text-decoration: none;
+      transition: color .2s linear;
+
+      &:hover {
+        color: white;
+      }
+
+      &-skype {
+        color: #0078ca;
+      }
+
+      &-envelope {
+        color: $app-accent-darker-color;
+      }
+
+      &-telegram {
+        color: #179cde;
+      }
+    }
+
+    .fa-upwork {
+      width: 3.4em;
+      height: 3.4em;
+      vertical-align: -9px;
+      margin-right: 5px;
+
+      svg {
+        fill: #31900b;
+        transition: fill .2s linear;
+
+        &:hover {
+          fill: white;
+        }
+      }
+
+    }
+  }
+}

@@ -52,3 +52,10 @@ $app-background-color: map-get(map-get($app-theme, background), background);
 body {
   background-color: $app-background-color;
 }
+
+
+[class*='mat'] {
+  &, & *:not(.fa) {
+    font-family: 'Poppins', sans-serif !important;
+  }
+}

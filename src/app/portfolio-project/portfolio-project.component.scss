@@ -50,6 +50,7 @@
 
       &-preview {
         pointer-events: none;
+        animation: portfolio-project-preview 2s infinite;
 
         img {
           height: 100vh;
@@ -79,4 +80,16 @@
 
   }
 
+}
+
+@keyframes portfolio-project-preview {
+  0% {
+    background-color: #e6e6e6;
+  }
+  50% {
+    background-color: #ccc;
+  }
+  0% {
+    background-color: #e6e6e6;
+  }
 }
