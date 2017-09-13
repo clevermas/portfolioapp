@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, OnInit, OnDestroy} from '@angular/core';
+import { Component, ViewEncapsulation, HostBinding, OnInit, OnDestroy} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PortfolioProjectService } from '../../portfolio-project/portfolio-project.service';
 import { PortfolioProject } from '../../portfolio-project/portfolio-project';
@@ -6,64 +6,67 @@ import { PortfolioProject } from '../../portfolio-project/portfolio-project';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
+import { routeChangeCustomAnimation } from '../_animations/routeChangeCustom.animation';
+
 @Component({
-    selector: 'app-project-page',
-    templateUrl: './project-page.component.html',
-    styleUrls: ['./project-page.component.scss'],
-    encapsulation: ViewEncapsulation.None
+  selector: 'app-project-page',
+  templateUrl: './project-page.component.html',
+  styleUrls: ['./project-page.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  animations: [routeChangeCustomAnimation]
 })
 
 export class ProjectPageComponent implements OnInit, OnDestroy {
-    otherProjects:PortfolioProject[];
-    project:PortfolioProject = <PortfolioProject>{};
-    id:number;
-    private subscribers:any = [];
-    private projectServiceSubscriber:any = {
-        unsubscribe: () => {
-        }
-    };
+  @HostBinding('@routeChangeCustomAnimation') triggerAnimation;
 
-    constructor(private projectsService:PortfolioProjectService,
-                private route:ActivatedRoute) {
+  otherProjects:PortfolioProject[];
+  project:PortfolioProject = <PortfolioProject>{};
+  id:number;
+  private subscribers:any = [];
+  private projectServiceSubscriber:any = {
+    unsubscribe: () => {
     }
+  };
 
-    ngOnInit() {
-        this.subscribers.push(
-            this.route.params.subscribe(params => {
-                this.id = +params['id'];
-                this.getCurrentProjectData();
-            }));
-    }
+  constructor(private projectsService:PortfolioProjectService,
+              private route:ActivatedRoute) {
+  }
 
-    ngOnDestroy() {
-        this.unsubscribeAll();
-    }
+  ngOnInit() {
+    this.subscribers.push(
+      this.route.params.subscribe(params => {
+        this.id = +params['id'];
+        this.getCurrentProjectData();
+      }));
+  }
 
-    getCurrentProjectData() {
+  ngOnDestroy() {
+    this.unsubscribeAll();
+  }
 
-        this.projectServiceSubscriber = this.projectsService
-            .getList()
-            .finally(() => {
-                this.projectServiceSubscriber.unsubscribe();
-            })
-            .subscribe($projects => {
-                let projects = [].concat($projects);
-                projects.map(
-                    (project:PortfolioProject, i) =>
-                    {
-                        if (project.id === this.id)
-                        {
-                            this.project = project;
-                            projects.splice(i, 1);
-                            this.otherProjects = projects;
-                        }
+  getCurrentProjectData() {
 
-                    });
-            });
-    }
+    this.projectServiceSubscriber = this.projectsService
+      .getList()
+      .finally(() => {
+        this.projectServiceSubscriber.unsubscribe();
+      })
+      .subscribe($projects => {
+        let projects = [].concat($projects);
+        projects.map(
+          (project:PortfolioProject, i) => {
+            if (project.id === this.id) {
+              this.project = project;
+              projects.splice(i, 1);
+              this.otherProjects = projects;
+            }
 
-    unsubscribeAll() {
-        this.subscribers.forEach(_ => _.unsubscribe());
-    }
+          });
+      });
+  }
+
+  unsubscribeAll() {
+    this.subscribers.forEach(_ => _.unsubscribe());
+  }
 
 }

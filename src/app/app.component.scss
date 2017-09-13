@@ -14,6 +14,9 @@ nav {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+
+  position: relative;
+  z-index: 999;
 }
 
 
@@ -86,67 +89,7 @@ nav {
 
   z-index: 100;
 
-  .my-name {
-    font-size: 3em;
-    font-weight: bold;
-    color: #00635b;
-  }
 
-  .slug {
-    font-weight: 300;
-  }
-
-  .hash-tags {
-    i {
-      color: $app-accent-darker-color;
-      font-weight: 300;
-    }
-  }
-
-  .contact {
-    margin: 2em 0;
-    letter-spacing: 1em;
-    padding-left: 16px;
-
-    .fa {
-      display: inline-block;
-      text-decoration: none;
-      transition: color .2s linear;
-
-      &:hover {
-        color: $app-accent-color;
-      }
-
-      &-skype {
-        color: #0078ca;
-      }
-
-      &-envelope {
-        color: $app-accent-darker-color;
-      }
-
-      &-telegram {
-        color: #179cde;
-      }
-    }
-
-    .fa-upwork {
-      width: 3.4em;
-      height: 3.4em;
-      vertical-align: -9px;
-      margin-right: 5px;
-
-      svg {
-        fill: #31900b;
-        transition: fill .2s linear;
-
-        &:hover {
-          fill: $app-accent-color;
-        }
-      }
-
-    }
-  }
 
   &:focus, &:active {
     outline: none !important;

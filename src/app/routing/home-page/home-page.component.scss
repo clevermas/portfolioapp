@@ -4,3 +4,8 @@ $shutter-bg: map-get($app-primary, 100);
 
 .home-page {
 }
+
+app-home-page {
+  display: block;
+  min-height: 200px;
+}
