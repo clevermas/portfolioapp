@@ -6,10 +6,18 @@ $shutter-bg-darken: map-get($app-primary, 800);
 $app-accent-color: map-get($app-accent, 800);
 $app-accent-darker-color: map-get($app-accent, 700);
 
-.app-root {
-  padding-top: 41px;
-  font-family: Roboto, sans-serif;
+nav {
+  background-color: $shutter-bg-darken;
+  padding: 8px 16px;
+  color:  hsla(0,0%,100%,.87);
 
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+
+.app-root {
   &.hide-spinner {
     .app-page-loader-spinner {
       top: -100%;

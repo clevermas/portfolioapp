@@ -1,4 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { NgModule } from '@angular/core';
 
 import { RouterModule } from '@angular/router';
@@ -15,13 +17,13 @@ import { RoutingModule } from './routing/routing.module';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     CoreModule,
     RouterModule,
     RoutingModule,
     MaterialModule,
-    MdProgressSpinnerModule,
+    MdProgressSpinnerModule
   ],
-  exports: [],
   providers: [
   ],
   bootstrap: [AppComponent]
