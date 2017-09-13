@@ -8,10 +8,11 @@ import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
   styleUrls: ['./app.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
+
 export class AppComponent implements OnInit, OnDestroy {
   subscribers = [];
-  shutterExpanded: boolean;
-  url: string
+  shutterExpanded:boolean;
+  url:string;
 
   constructor(private route:ActivatedRoute, private router:Router) {
   }
@@ -25,10 +26,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
     this.subscribers.push(this.router
       .events
-      .subscribe((e:NavigationEnd) =>
-      {
-        if (e instanceof NavigationEnd)
-        {
+      .subscribe((e:NavigationEnd) => {
+        if (e instanceof NavigationEnd) {
           this.url = e.url.replace(/\?.*$/, '');
         }
       }));
@@ -39,8 +38,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   expand() {
-    if (this.shutterExpanded)
-    {
+    if (this.shutterExpanded) {
       this.router.navigate(['/']);
     }
   }
