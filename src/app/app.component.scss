@@ -16,7 +16,14 @@ nav {
   align-items: center;
 
   position: relative;
-  z-index: 999;
+  z-index: 1000;
+
+  a {
+    transition: color .3s linear;
+    &.active {
+      color: #ffffff;
+    }
+  }
 }
 
 
@@ -38,6 +45,7 @@ nav {
 
   .app-img-load {
     opacity: 0;
+    transition: opacity .3s linear;
 
     &.img-loaded {
       opacity: 1;

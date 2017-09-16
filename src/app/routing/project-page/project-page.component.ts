@@ -1,10 +1,13 @@
-import { Component, ViewEncapsulation, HostBinding, OnInit, OnDestroy} from '@angular/core';
+import { Component, ViewEncapsulation, HostBinding, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PortfolioProjectService } from '../../portfolio-project/portfolio-project.service';
 import { PortfolioProject } from '../../portfolio-project/portfolio-project';
 
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
+
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/first';
+import 'rxjs/add/observable/of';
 
 import { routeChangeCustomAnimation } from '../_animations/routeChangeCustom.animation';
 
@@ -16,17 +19,13 @@ import { routeChangeCustomAnimation } from '../_animations/routeChangeCustom.ani
   animations: [routeChangeCustomAnimation]
 })
 
-export class ProjectPageComponent implements OnInit, OnDestroy {
+export class ProjectPageComponent implements OnInit {
   @HostBinding('@routeChangeCustomAnimation') triggerAnimation;
 
-  otherProjects:PortfolioProject[];
-  project:PortfolioProject = <PortfolioProject>{};
+  otherProjects$:Observable<PortfolioProject[]>;
+  project$:Observable<PortfolioProject>;
   id:number;
   private subscribers:any = [];
-  private projectServiceSubscriber:any = {
-    unsubscribe: () => {
-    }
-  };
 
   constructor(private projectsService:PortfolioProjectService,
               private route:ActivatedRoute) {
@@ -40,33 +39,26 @@ export class ProjectPageComponent implements OnInit, OnDestroy {
       }));
   }
 
-  ngOnDestroy() {
-    this.unsubscribeAll();
-  }
-
   getCurrentProjectData() {
 
-    this.projectServiceSubscriber = this.projectsService
+    this.otherProjects$ = this.projectsService
       .getList()
-      .finally(() => {
-        this.projectServiceSubscriber.unsubscribe();
-      })
-      .subscribe($projects => {
-        let projects = [].concat($projects);
-        projects.map(
-          (project:PortfolioProject, i) => {
-            if (project.id === this.id) {
-              this.project = project;
-              projects.splice(i, 1);
-              this.otherProjects = projects;
-            }
+      .first()
+      .switchMap(projects =>
+        Observable.of(projects.filter(this.isNotCurrentProject)));
 
-          });
-      });
+    this.project$ = this.projectsService
+      .getList()
+      .first()
+      .switchMap(projects =>
+        Observable.of(projects.filter(this.isCurrentProject)[0]));
+
   }
 
-  unsubscribeAll() {
-    this.subscribers.forEach(_ => _.unsubscribe());
-  }
+  isCurrentProject = project =>
+     project.id === this.id;
+
+  isNotCurrentProject = project =>
+     project.id !== this.id;
 
 }

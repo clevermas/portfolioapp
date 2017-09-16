@@ -1,8 +1,8 @@
 <div class="project-page">
-  <app-portfolio-project [instance]="project">
+  <app-portfolio-project [instance]="project$ | async" view="page-content">
     <div class="project-footer">
       <h2>See also:</h2>
-      <app-portfolio-project-list type="seeOtherProjects" [projects]="otherProjects"></app-portfolio-project-list>
+      <app-portfolio-project-list view="see-other-projects" [projects]="otherProjects$ | async"></app-portfolio-project-list>
     </div>
   </app-portfolio-project>
 </div>

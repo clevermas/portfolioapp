@@ -8,6 +8,16 @@ export class PortfolioProjectService {
 
   PROJECTS_MOCKED = [
     <PortfolioProject>{
+      id: 6,
+      name: 'Good&Co',
+      description: 'The startup from San Francisco and Boston I\'ve been working on a year. The app is based on Angular 1.5 with transforming to Angular 2 architecture originally kickstarted with Typescript.',
+      thumbnails: {
+        medium: 'assets/img/goodco-medium.png',
+        large: 'assets/img/goodco-large.png'
+      },
+      url: 'https://good.co/'
+    },
+    <PortfolioProject>{
       id: 1,
       name: 'Callback Hero',
       description: 'One of my favourite works. Wonderful Landing page representing service providing callback buttons on each web page. The page has section with 4 steps and interactive grey path leading to them, which goes blue when you scroll to it. The reverse action is happend when scroll up. Another featured thing is a hero section with HTML5 video. I multiplied 1 video to 3 for each device type to optimise downloading time and therefore page performance. I used HTML5, CSS3, VanillaJS, jQuery, Bootstrap 3 with SCSS.',
@@ -52,15 +62,15 @@ export class PortfolioProjectService {
         large: 'assets/img/dslvertrag-large.png'
       }
     },
-    <PortfolioProject>{
-      id: 6,
-      name: 'Handyratenkauf',
-      description: 'E-commerce project target to cell phones sale. I developed landing page using HTML5, CSS3, Bootstap 3, SCSS, jQuery. The page was integrated with Wordpress, after which users can select products from catalog.',
-      thumbnails: {
-        medium: 'assets/img/handyratenkauf-medium.png',
-        large: 'assets/img/handyratenkauf-large.png'
-      }
-    },
+    //<PortfolioProject>{
+    //  id: 6,
+    //  name: 'Handyratenkauf',
+    //  description: 'E-commerce project target to cell phones sale. I developed landing page using HTML5, CSS3, Bootstap 3, SCSS, jQuery. The page was integrated with Wordpress, after which users can select products from catalog.',
+    //  thumbnails: {
+    //    medium: 'assets/img/handyratenkauf-medium.png',
+    //    large: 'assets/img/handyratenkauf-large.png'
+    //  }
+    //},
     <PortfolioProject>{
       id: 7,
       name: 'Restposten Export',

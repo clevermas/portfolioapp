@@ -4,7 +4,7 @@ $shutter-bg: map-get($app-primary, 100);
 $shutter-bg-darken: map-get($app-primary, 800);
 
 $app-accent-color: map-get($app-accent, 800);
-$app-accent-darker-color: map-get($app-accent, 700);
+$app-accent-darker-color: map-get($app-accent, 500);
 
 
 .backdrop {
@@ -61,18 +61,19 @@ $app-accent-darker-color: map-get($app-accent, 700);
 
   .my-name {
     font-size: 3em;
-    font-weight: bold;
+    font-weight: 300;
     color: currentColor;
-    text-transform: uppercase;
+    //text-transform: uppercase;
   }
 
   .slug {
-    font-weight: 300;
+    font-weight: 100;
   }
 
   .hash-tags {
     i {
-      font-weight: 300;
+      font-weight: 100;
+      font-style: normal;
     }
   }
 
@@ -91,7 +92,7 @@ $app-accent-darker-color: map-get($app-accent, 700);
       }
 
       &-skype {
-        color: #0078ca;
+        color: #28a3f7;
       }
 
       &-envelope {
@@ -110,7 +111,7 @@ $app-accent-darker-color: map-get($app-accent, 700);
       margin-right: 5px;
 
       svg {
-        fill: #31900b;
+        fill: #42bb12;
         transition: fill .2s linear;
 
         &:hover {
