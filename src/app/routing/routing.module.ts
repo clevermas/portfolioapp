@@ -14,7 +14,7 @@ import { ContactPageComponent } from './contact-page/contact-page.component';
 const appRoutes:Routes = [
   //{
   //  path: '',
-  //  redirectTo: '/projects',
+  //  redirectTo: '/home',
   //  pathMatch: 'full'
   //},
   {
