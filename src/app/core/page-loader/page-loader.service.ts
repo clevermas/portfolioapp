@@ -1,24 +1,26 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
-import { PageLoader } from './page-loader';
 
 @Injectable()
 export class PageLoaderService {
-  private loaderSubject = new Subject<PageLoader>();
+  private loaderSubject = new Subject<string>();
   public state$ = this.loaderSubject.asObservable();
 
   constructor() {}
 
   showUponTimeout(time = 300) {
-    this.show();
-    setTimeout(() => this.hide(), time);
+    this.loading();
+    setTimeout(() => this.loaded(), time);
   }
 
-  show() {
-    this.loaderSubject.next(<PageLoader>{show: true});
+  loading() {
+    this.loaderSubject.next('loading');
   }
-  hide() {
-    this.loaderSubject.next(<PageLoader>{show: false});
+  loaded() {
+    this.loaderSubject.next('loaded');
   }
 
+  loadedAfter(time = 300) {
+    setTimeout(() => this.loaded(), time);
+  }
 }

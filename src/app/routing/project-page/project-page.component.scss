@@ -2,19 +2,22 @@
   z-index: 1;
 
   .project-footer {
-    margin-top: 4em;
+    @media (min-width: 769px) {
+      //margin-bottom: 4em;
+    }
+    padding: 1em;
     .portfolio-project-list {
       flex-flow: row;
       margin: 0;
-      max-width: 50vw;
+      //height: 100px;
       overflow: hidden;
 
-      .project-preview {
-        height: auto !important;
-        img {
-          max-height: 124px;
-        }
-      }
+      //.project-preview {
+      //  height: auto !important;
+      //  img {
+      //    max-height: 124px;
+      //  }
+      //}
     }
   }
 }

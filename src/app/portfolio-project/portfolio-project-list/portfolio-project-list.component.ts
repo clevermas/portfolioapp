@@ -1,10 +1,13 @@
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+
 import { Component, OnInit, OnChanges, Input, ViewEncapsulation, SimpleChange } from '@angular/core';
+
+import { NgxCarousel } from 'ngx-carousel';
 
 import { PortfolioProjectService } from '../portfolio-project.service';
 import { PortfolioProject } from '../portfolio-project';
 
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
 
 @Component({
   selector: 'app-portfolio-project-list',
@@ -15,7 +18,7 @@ import { Subject } from 'rxjs/Subject';
 export class PortfolioProjectListComponent implements OnInit, OnChanges {
   projects:PortfolioProject[];
 
-  // the current view state (home page or project page list)
+  // the current view state (portfolio project view state)
   @Input()
     view:string;
 
@@ -23,6 +26,21 @@ export class PortfolioProjectListComponent implements OnInit, OnChanges {
     projectsBinding:PortfolioProject[];
 
   private projectsSubscriber = new Subject<PortfolioProject[]>().subscribe();
+
+  private CAROUSEL_OPTIONS_DEFAULT = {
+    grid: {xs: 1, sm: 3, md: 4, lg: 4, all: 0},
+    slide: 1,
+    speed: 400,
+    interval: 6000,
+    // FIXME: Find another library. Slide pointer does not work
+    point: false,
+    load: 2,
+    touch: true,
+    loop: true,
+    dynamicLength: true
+  };
+
+  private carouselOptions = Object.assign({}, this.CAROUSEL_OPTIONS_DEFAULT);
 
   constructor(private projectsService:PortfolioProjectService) {
   }
@@ -41,7 +59,9 @@ export class PortfolioProjectListComponent implements OnInit, OnChanges {
   getProjectsList() {
     this.projectsSubscriber = this.projectsService
       .getList()
-      .subscribe(projects =>
-        this.projects = projects);
+      .subscribe(projects => {
+        this.projects = projects;
+      });
   }
+
 }
