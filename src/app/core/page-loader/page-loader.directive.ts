@@ -1,7 +1,6 @@
 import { Directive, ElementRef, Renderer2, Input, OnInit } from '@angular/core';
 
 import { PageLoaderService } from './page-loader.service';
-import { PageLoader } from './page-loader';
 import { ActivatedRoute } from '@angular/router';
 
 @Directive({
@@ -9,8 +8,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PageLoaderDirective implements OnInit {
   private appRootClass = '.app-root';
-  private appPageLoadedClass = 'page-loaded';
-  private appHideSpinnerClass = 'hide-spinner';
+  //private appPageLoadedClass = 'page-loaded';
+  //private appHideSpinnerClass = 'hide-spinner';
 
   @Input('app-page-loader')
     simpleTimeout: string;
@@ -22,19 +21,19 @@ export class PageLoaderDirective implements OnInit {
   }
 
   ngOnInit() {
-    this.loader.state$.subscribe(loaderState => {
-
-      if (loaderState.show) {
-        this.addClass('no-transition');
-        this.removeClass(this.appPageLoadedClass);
-        this.removeClass(this.appHideSpinnerClass);
-      }
-      else {
-        this.removeClass('no-transition');
-        this.addClass(this.appPageLoadedClass);
-        this.addClass(this.appHideSpinnerClass);
-      }
-    });
+    //this.loader.state$.subscribe(loaderState => {
+    //
+    //  if (loaderState.show) {
+    //    this.addClass('no-transition');
+    //    this.removeClass(this.appPageLoadedClass);
+    //    this.removeClass(this.appHideSpinnerClass);
+    //  }
+    //  else {
+    //    this.removeClass('no-transition');
+    //    this.addClass(this.appPageLoadedClass);
+    //    this.addClass(this.appHideSpinnerClass);
+    //  }
+    //});
 
     this.route.params.subscribe(this.loadUponSimpleTimeout);
   }
@@ -46,12 +45,12 @@ export class PageLoaderDirective implements OnInit {
     }
   }
 
-  addClass(className:string, el = document.querySelector(this.appRootClass)) {
-    this.renderer.addClass(el, className);
-  }
-
-  removeClass(className:string, el = document.querySelector(this.appRootClass)) {
-    this.renderer.removeClass(el, className);
-  }
+  //addClass(className:string, el = document.querySelector(this.appRootClass)) {
+  //  this.renderer.addClass(el, className);
+  //}
+  //
+  //removeClass(className:string, el = document.querySelector(this.appRootClass)) {
+  //  this.renderer.removeClass(el, className);
+  //}
 
 }

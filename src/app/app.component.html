@@ -1,12 +1,13 @@
 <div class="app-root mat-typography">
   <nav>
-    <a md-button routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="fa fa-ravelry" aria-hidden="true"></i> Portfolioapp</a>
+    <a md-button routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+      class="fa fa-ravelry" aria-hidden="true"></i> Portfolioapp</a>
     <a md-button routerLink="/contact" routerLinkActive="active">Contact</a>
   </nav>
 
-  <main>
+  <main [@pageLoaderAnimation]='loader.state$ | async'>
     <router-outlet></router-outlet>
   </main>
 
-  <!--<md-spinner class="app-page-loader-spinner"></md-spinner>-->
+  <md-spinner class="app-page-loader-spinner" [@pageLoaderSpinnerAnimation]='loader.state$ | async'></md-spinner>
 </div>

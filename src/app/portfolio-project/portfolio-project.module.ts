@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
-
 import { CommonModule } from '@angular/common';
-
 import { RouterModule } from '@angular/router';
-
 import { MaterialModule } from '@angular/material';
+
+import { NgxCarouselModule } from 'ngx-carousel';
 
 import { CoreModule } from '../core/core.module';
 
@@ -18,6 +17,7 @@ import { PortfolioProjectService } from './portfolio-project.service';
     CommonModule,
     RouterModule,
     MaterialModule,
+    NgxCarouselModule,
     CoreModule
   ],
   declarations: [

@@ -62,15 +62,6 @@ export class PortfolioProjectService {
         large: 'assets/img/dslvertrag-large.png'
       }
     },
-    //<PortfolioProject>{
-    //  id: 6,
-    //  name: 'Handyratenkauf',
-    //  description: 'E-commerce project target to cell phones sale. I developed landing page using HTML5, CSS3, Bootstap 3, SCSS, jQuery. The page was integrated with Wordpress, after which users can select products from catalog.',
-    //  thumbnails: {
-    //    medium: 'assets/img/handyratenkauf-medium.png',
-    //    large: 'assets/img/handyratenkauf-large.png'
-    //  }
-    //},
     <PortfolioProject>{
       id: 7,
       name: 'Restposten Export',
@@ -89,6 +80,16 @@ export class PortfolioProjectService {
         large: 'assets/img/ug-large.png'
       }
     }
+    //,
+    //<PortfolioProject>{
+    //  id: 9,
+    //  name: 'Handyratenkauf',
+    //  description: 'E-commerce project target to cell phones sale. I developed landing page using HTML5, CSS3, Bootstap 3, SCSS, jQuery. The page was integrated with Wordpress, after which users can select products from catalog.',
+    //  thumbnails: {
+    //    medium: 'assets/img/handyratenkauf-medium.png',
+    //    large: 'assets/img/handyratenkauf-large.png'
+    //  }
+    //}
   ];
 
   getList():Observable<PortfolioProject[]> {
