@@ -1,12 +1,9 @@
-import { Observable ,  Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 
 import { Component, OnInit, OnChanges, Input, ViewEncapsulation, SimpleChange } from '@angular/core';
 
-import { NgxCarousel } from 'ngx-carousel';
-
 import { PortfolioProjectService } from '../portfolio-project.service';
 import { PortfolioProject } from '../portfolio-project';
-
 
 @Component({
   selector: 'app-portfolio-project-list',
@@ -15,14 +12,12 @@ import { PortfolioProject } from '../portfolio-project';
   encapsulation: ViewEncapsulation.None
 })
 export class PortfolioProjectListComponent implements OnInit, OnChanges {
-  projects:PortfolioProject[];
+  projects: PortfolioProject[];
 
   // the current view state (portfolio project view state)
-  @Input()
-    view:string;
+  @Input() view: string;
 
-  @Input('projects')
-    projectsBinding:PortfolioProject[];
+  @Input('projects') projectsBinding: PortfolioProject[];
 
   private projectsSubscriber = new Subject<PortfolioProject[]>().subscribe();
 
@@ -41,14 +36,14 @@ export class PortfolioProjectListComponent implements OnInit, OnChanges {
 
   private carouselOptions = Object.assign({}, this.CAROUSEL_OPTIONS_DEFAULT);
 
-  constructor(private projectsService:PortfolioProjectService) {
+  constructor(private projectsService: PortfolioProjectService) {
   }
 
   ngOnInit() {
     this.getProjectsList();
   }
 
-  ngOnChanges(changes:{ [propertyName: string]: SimpleChange }) {
+  ngOnChanges(changes: { [propertyName: string]: SimpleChange }) {
     if (changes['projectsBinding']) {
       this.projectsSubscriber.unsubscribe();
       this.projects = changes['projectsBinding'].currentValue;

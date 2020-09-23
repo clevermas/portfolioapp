@@ -5,7 +5,6 @@ import { PortfolioProject } from './portfolio-project';
 
 @Injectable()
 export class PortfolioProjectService {
-
   PROJECTS_MOCKED = [
     <PortfolioProject>{
       id: 6,
@@ -92,11 +91,11 @@ export class PortfolioProjectService {
     //}
   ];
 
-  getList():Observable<PortfolioProject[]> {
-    return this.api.get('', {mocked: true, mockedData: this.PROJECTS_MOCKED})
+  getList(): Observable<PortfolioProject[]> {
+    return this.api.get('', { mocked: true, mockedData: this.PROJECTS_MOCKED });
   }
 
-  constructor(private api:API) {
+  constructor(private api: API) {
   }
 
 }
