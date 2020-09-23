@@ -5,13 +5,13 @@ import { PortfolioProject } from '../../portfolio-project/portfolio-project';
 
 import { PageLoaderService } from '../../core/page-loader/page-loader.service';
 
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/operator/first';
-import 'rxjs/add/operator/finally';
-import 'rxjs/add/observable/merge';
-import 'rxjs/add/observable/of';
+
+
+
+
+
 
 import { routeChangeCustomAnimation } from '../_animations/routeChangeCustom.animation';
 
