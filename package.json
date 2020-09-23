@@ -32,6 +32,7 @@
     "zone.js": "^0.10.3"
   },
   "devDependencies": {
+    "@angular-devkit/build-angular": "~0.901.12",
     "@angular/language-service": "^10.1.2",
     "@types/jasmine": "~2.5.53",
     "@types/jasminewd2": "~2.0.2",
