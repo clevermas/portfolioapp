@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, asyncScheduler } from 'rxjs';
 import { observeOn } from 'rxjs/operators';
-import { asyncScheduler } from 'rxjs/internal/scheduler/async';
 
 @Injectable()
 export class PageLoaderService {
