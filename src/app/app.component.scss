@@ -7,9 +7,17 @@ $app-accent-color: map-get($app-accent, 800);
 $app-accent-darker-color: map-get($app-accent, 700);
 
 nav {
-  background-color: $shutter-bg-darken;
+  background-color: $accent-color;
   padding: 8px 16px;
-  color:  hsla(0,0%,100%,.87);
+  color: hsla(0,0%,100%,.87);
+
+  .logo {
+    margin-right: 1em;
+    color: #fff;
+    font-weight: 100;
+    text-transform: uppercase;
+    pointer-events: none;
+  }
 
   display: flex;
   flex-wrap: wrap;
@@ -21,7 +29,7 @@ nav {
   a {
     transition: color .3s linear;
     &.active {
-      color: #ffffff;
+      color: #fff;
     }
   }
 }

@@ -11,7 +11,6 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   providers: [
-    API,
     PageLoaderService
   ],
   declarations: [

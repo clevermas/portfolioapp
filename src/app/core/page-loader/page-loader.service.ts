@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { observeOn } from 'rxjs/operators';
+import { asyncScheduler } from 'rxjs/internal/scheduler/async';
 
 @Injectable()
 export class PageLoaderService {
   private loaderSubject = new Subject<string>();
-  public state$ = this.loaderSubject.asObservable();
+  public state$ = this.loaderSubject.asObservable().pipe(
+    observeOn(asyncScheduler)
+  );
 
   constructor() {}
 

@@ -10,16 +10,19 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
 $app-primary: mat-palette($mat-teal, 800, 700, 900);
-$app-accent: mat-palette($mat-cyan, 800, 700, 900);
+$app-accent: mat-palette($mat-cyan, 500, 200, 700);
 
 $primary-color-dark: #00796B;
 $primary-color: #009688;
 $primary-color-light: #B2DFDB;
 $primary-color-text: #FFFFFF;
-$accent-color: #00BCD4;
+$accent-color: map-get($app-accent, 500);
 $primary-text-color: #212121;
 $secondary-text-color: #757575;
 $divider-color: #BDBDBD;
+
+$shutter-bg: map-get($app-primary, 100);
+$shutter-bg-darken: map-get($app-primary, 800);
 
 // The warn palette is optional (defaults to red).
 $app-warn: mat-palette($mat-red);
@@ -40,7 +43,7 @@ $app-background-color: map-get(map-get($app-theme, background), background);
   &, h1 {
     color: $app-foreground-text-color;
   }
-  .md-raised,button {
+  .mat-raised-button,button {
     font-weight: 300;
     letter-spacing: 0.5px;
   }

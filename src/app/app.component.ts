@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 import { PageLoaderService, pageLoaderAnimation, pageLoaderSpinnerAnimation } from './core/page-loader/';
 
@@ -13,14 +13,8 @@ import { PageLoaderService, pageLoaderAnimation, pageLoaderSpinnerAnimation } fr
   encapsulation: ViewEncapsulation.None
 })
 
-export class AppComponent implements OnInit, OnDestroy {
-  constructor(public loader:PageLoaderService) {
-  }
-
-  ngOnInit() {
-  }
-
-  ngOnDestroy() {
+export class AppComponent {
+  constructor(public loader: PageLoaderService) {
   }
 
 }
