@@ -1,5 +1,7 @@
 @import '../app.theming';
 
+$min-width: 250px;
+
 .backdrop {
   &-preloader {
     display: none;
@@ -65,7 +67,7 @@
   .hash-tags {
     display: inline-flex;
     justify-content: space-between;
-    min-width: 250px;
+    min-width: $min-width;
 
     i {
       font-weight: 100;
@@ -75,8 +77,9 @@
 
   .contact {
     margin: 2em 0;
-    letter-spacing: 1em;
-    padding-left: 16px;
+    display: flex;
+    min-width: $min-width;
+    justify-content: space-between;
 
     .fa {
       display: inline-block;
@@ -102,7 +105,6 @@
       width: 3.4em;
       height: 3.4em;
       vertical-align: -9px;
-      margin-right: 5px;
 
       svg {
         fill: currentColor;

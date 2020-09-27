@@ -1,44 +1,23 @@
-.portfolio-project {
+@import "mixins";
 
-  .project-preview {
+.gallery-item {
+  .item-preview {
     cursor: pointer;
   }
 
-  // view state for a small preview on Home Page
-  &.view-small-preview {
-    .project-preview {
-      figure {
-        overflow: hidden;
-      }
-      img {
-        transition: all .3s ease-out;
-      }
-      &:after {
-        transition-delay: .3s;
-        transition-duration: .7s;
-      }
-      &:hover {
-        img {
-          transform: scale(1.1);
-        }
-        figcaption {
-          opacity: 1;
-          transform: translate3d(0, -50%, 0);
-        }
-        &:after {
-          background: rgba(0, 0, 0, 0.75);
-        }
-      }
-    }
-  }
+  @include gallery-item-view-default;
+  @include gallery-item-view-small-preview;
+  @include gallery-item-see-other-projects;
 
-  // View state for Home Page and See Other component on Project Page
+  // Group of views:
+  // - Small Preview View;
+  // - See Other View;
   &.view-small-preview, .view-see-other-projects {
-    .project-description {
+    .item-description {
       display: none;
     }
 
-    .project-preview {
+    .item-small-preview {
       position: relative;
       display: block;
 
@@ -91,108 +70,4 @@
 
   }
 
-  // View state for See Other Component
-  &.view-see-other-projects {
-    figcaption {
-      @media (min-width: 768px) {
-        font-size: 14px !important;
-      }
-    }
-    .project-preview {
-      max-width: 400px;
-      margin: auto;
-      &:hover {
-        &:after {
-          background: rgba(0, 0, 0, 0.75);
-        }
-      }
-    }
-  }
-
-  // View state for e.g. Project Page
-  &.view-page-content {
-    > section {
-      > .project-content-wrapper {
-        align-content: space-between;
-        > .project {
-          &-description {
-            transition: all .2s linear;
-            padding: 1em;
-
-            .btn-visit {
-              margin-top: 1em;
-            }
-          }
-        }
-      }
-
-      > .project-preview {
-        transition: all .2s linear;
-        pointer-events: none;
-        text-align: right;
-
-        @media (max-width: 768px) {
-          order: -1;
-        }
-
-        figure {
-          animation: portfolio-project-preview 2s infinite;
-          display: inline-block;
-        }
-
-        img {
-          max-width: 100%;
-          display: block;
-          @media (min-width: 769px) {
-            max-height: 100vh;
-          }
-        }
-      }
-
-    }
-
-    // flex layout
-    > section {
-      display: flex;
-      flex-wrap: wrap;
-      max-width: 1614px;
-      margin: 0 auto;
-
-      .project-footer {
-        padding: 20px;
-      }
-
-      @media (min-width: 769px) {
-        align-items: stretch;
-
-        > .project-content-wrapper {
-          width: 50%;
-        }
-
-        > .project-preview {
-          width: 50%;
-        }
-
-      }
-
-      .project-content-wrapper {
-        display: flex;
-        flex-wrap: wrap;
-      }
-
-    }
-  }
-
-}
-
-@keyframes portfolio-project-preview {
-  0% {
-    background-color: #e6e6e6;
-  }
-  50% {
-    background-color: #ccc;
-  }
-  0% {
-    background-color: #e6e6e6;
-  }
 }

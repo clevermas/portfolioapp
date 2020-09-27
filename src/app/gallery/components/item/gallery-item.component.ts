@@ -1,38 +1,22 @@
-import { Component, OnInit, OnChanges, Input, SimpleChange, ViewEncapsulation } from '@angular/core';
+import { Component, OnChanges, Input, SimpleChanges } from '@angular/core';
 import { GalleryItemModel } from './gallery-item.model';
 
 @Component({
   selector: 'app-gallery-item',
   templateUrl: './gallery-item.component.html',
   styleUrls: ['./gallery-item.component.scss']
-  //,
-  //encapsulation: ViewEncapsulation.None
 })
-export class GalleryItemComponent implements OnInit, OnChanges {
+export class GalleryItemComponent implements OnChanges {
 
-  @Input()
-  view: string;
+  @Input() view = 'default';
 
-  @Input('instance')
-  project: GalleryItemModel;
+  @Input('instance') item: GalleryItemModel;
 
-  viewClass: string = '';
+  viewClass = 'view-default';
 
-  //project:GalleryItemModel = <GalleryItemModel>{};
-
-  constructor() {
-  }
-
-  ngOnInit() {
-  }
-
-  ngOnChanges(changes: { [propertyName: string]: SimpleChange }) {
-    for (let propName in changes) {
-      switch (propName) {
-        case 'view':
-          this.viewClass = 'view-' + changes['view'].currentValue;
-          break;
-      }
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.view && changes.view.previousValue !== changes.view.currentValue) {
+      this.viewClass = 'view-' + changes['view'].currentValue;
     }
   }
 }

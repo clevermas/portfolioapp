@@ -22,16 +22,17 @@ export class HomePageComponent implements OnInit, OnDestroy {
   // FIXME: need to be set manually because of bug in Angular 4 on :leave transition
   backdropAnimationState = 'active';
 
-  constructor(private router:Router) {}
+  constructor(private router: Router) {
+  }
 
   ngOnInit() {
-  //  this.subscribers.push(this.router
-  //    .events
-  //    .subscribe((e:NavigationStart) => {
-  //      if (e instanceof NavigationStart) {
-  //        setTimeout(() => this.backdropAnimationState = 'inactive');
-  //      }
-  //    }));
+    //  this.subscribers.push(this.router
+    //    .events
+    //    .subscribe((e:NavigationStart) => {
+    //      if (e instanceof NavigationStart) {
+    //        setTimeout(() => this.backdropAnimationState = 'inactive');
+    //      }
+    //    }));
   }
 
   ngOnDestroy() {

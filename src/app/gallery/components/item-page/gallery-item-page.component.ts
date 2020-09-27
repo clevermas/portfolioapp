@@ -1,12 +1,12 @@
-import { Component, ViewEncapsulation, HostBinding, OnInit, OnDestroy } from '@angular/core';
+import { Component, HostBinding, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+
+import { Observable } from 'rxjs';
+import { finalize } from 'rxjs/operators';
+
 import { GalleryService } from '../../services/gallery.service';
-import { GalleryItemModel } from '../item/gallery-item.model';
-
 import { PageLoaderService } from '../../../core/page-loader/page-loader.service';
-
-import { Observable, concat, of } from 'rxjs';
-import { finalize, first, switchMap } from 'rxjs/operators';
+import { GalleryItemModel } from '../item/gallery-item.model';
 
 import { routeChangeCustomAnimation } from '../../../shared/animations/routeChangeCustom.animation';
 
@@ -14,15 +14,13 @@ import { routeChangeCustomAnimation } from '../../../shared/animations/routeChan
   selector: 'app-gallery-item-page',
   templateUrl: './gallery-item-page.component.html',
   styleUrls: ['./gallery-item-page.component.scss'],
-  encapsulation: ViewEncapsulation.None,
   animations: [routeChangeCustomAnimation]
 })
 
 export class GalleryItemPageComponent implements OnInit, OnDestroy {
   @HostBinding('@routeChangeCustomAnimation') triggerAnimation;
 
-  otherProjects$: Observable<GalleryItemModel[]>;
-  project$: Observable<GalleryItemModel>;
+  item$: Observable<GalleryItemModel>;
   id: number;
 
   private PROJECT_CHANGE_LOAD_TIMEOUT = 500;
@@ -38,47 +36,14 @@ export class GalleryItemPageComponent implements OnInit, OnDestroy {
       this.route.params.subscribe(params => {
         this.id = +params['id'];
         this.loader.loading();
-        const projectData = this.getCurrentProjectData()
+        this.item$ = this.projectsService.getItem(this.id)
           .pipe(
             finalize(() => this.loader.loadedAfter(this.PROJECT_CHANGE_LOAD_TIMEOUT))
           );
-        this.subscribers.push(projectData.subscribe());
       }));
   }
 
   ngOnDestroy() {
     this.subscribers.map(_ => _.unsubscribe());
   }
-
-  getCurrentProjectData() {
-    this.otherProjects$ = this.projectsService
-      .getList()
-      .pipe(
-        first(),
-        switchMap(projects =>
-          of(projects.filter(this.isNotCurrentProject) // .splice(0,4)
-          )
-        )
-      );
-
-    this.project$ = this.projectsService
-      .getList()
-      .pipe(
-        first(),
-        switchMap(projects =>
-          of(projects.filter(this.isCurrentProject)[0] // .splice(0,4)
-          )
-        )
-      );
-
-    return concat(this.otherProjects$, this.project$);
-
-  }
-
-  isCurrentProject = project =>
-    project.id === this.id
-
-  isNotCurrentProject = project =>
-    project.id !== this.id
-
 }

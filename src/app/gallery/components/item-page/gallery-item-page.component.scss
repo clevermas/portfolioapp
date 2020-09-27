@@ -1,28 +1,9 @@
-.project-page {
-  z-index: 1;
-
-  .project-footer {
-    @media (min-width: 769px) {
-      //margin-bottom: 4em;
-    }
-    padding: 1em;
-    .portfolio-project-list {
-      flex-flow: row;
-      margin: 0;
-      //height: 100px;
-      overflow: hidden;
-
-      //.project-preview {
-      //  height: auto !important;
-      //  img {
-      //    max-height: 124px;
-      //  }
-      //}
-    }
-  }
-}
-
-app-gallery-item-page {
+:host {
   display: block;
   min-height: 200px;
+
+  section {
+    z-index: 1;
+  }
+
 }

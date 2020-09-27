@@ -1,0 +1,28 @@
+@mixin gallery-item-view-small-preview {
+  &.view-small-preview {
+    .item-small-preview {
+      figure {
+        overflow: hidden;
+      }
+      img {
+        transition: all .3s ease-out;
+      }
+      &:after {
+        transition-delay: .3s;
+        transition-duration: .7s;
+      }
+      &:hover {
+        img {
+          transform: scale(1.1);
+        }
+        figcaption {
+          opacity: 1;
+          transform: translate3d(0, -50%, 0);
+        }
+        &:after {
+          background: rgba(0, 0, 0, 0.75);
+        }
+      }
+    }
+  }
+}

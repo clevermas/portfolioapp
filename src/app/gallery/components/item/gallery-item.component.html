@@ -1,32 +1,31 @@
-<div class="portfolio-project" ngClass="{{viewClass}}">
+<div class="gallery-item" [ngClass]="viewClass">
 
-  <section *ngIf="view === 'page-content'">
-    <div class="project-content-wrapper">
-      <div class="project-description">
-        <h1>{{ project?.name }}</h1>
+  <section *ngIf="view === 'default'">
+    <div class="item-content-wrapper">
+      <div class="item-description">
+        <h1>{{ item?.name }}</h1>
 
-        <p>{{ project?.description }}</p>
+        <p>{{ item?.description }}</p>
 
-        <a class="btn-visit" href="{{ project?.url }}" target="_blank" mat-raised-button color="accent" *ngIf="project?.url">Visit</a>
+        <a class="btn-visit" href="{{ item?.url }}" target="_blank" mat-raised-button color="accent" *ngIf="item?.url">Visit</a>
       </div>
 
-      <ng-content select=".project-footer"></ng-content>
+      <ng-content select=".item-footer"></ng-content>
     </div>
 
-    <div class="project-preview">
+    <div class="item-preview">
       <figure>
-        <img src="" [app-img-load]="project?.thumbnails?.large"/>
+        <img src="" [app-img-load]="item?.thumbnails?.large"/>
       </figure>
     </div>
   </section>
 
-
   <section *ngIf="view === 'small-preview' || view === 'see-other-projects'">
-    <a [routerLink]="[project?.id]"
-       class="project-preview">
+    <a [routerLink]="[item?.id]"
+       class="item-small-preview">
       <figure>
-        <img src="{{ project?.thumbnails?.medium }}"/>
-        <figcaption>{{ project?.name }}</figcaption>
+        <img src="{{ item?.thumbnails?.medium }}"/>
+        <figcaption>{{ item?.name }}</figcaption>
       </figure>
     </a>
   </section>

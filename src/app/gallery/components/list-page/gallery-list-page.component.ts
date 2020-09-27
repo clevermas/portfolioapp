@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { routeChangeCustomAnimation } from '../../../shared/animations/routeChangeCustom.animation';
 
 @Component({
@@ -7,11 +7,5 @@ import { routeChangeCustomAnimation } from '../../../shared/animations/routeChan
   styleUrls: ['./gallery-list-page.component.scss'],
   animations: [routeChangeCustomAnimation]
 })
-export class GalleryListPageComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class GalleryListPageComponent {
 }
