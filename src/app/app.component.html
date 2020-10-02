@@ -5,9 +5,9 @@
     <a mat-button routerLink="/gallery" routerLinkActive="active">Gallery</a>
   </nav>
 
-  <main [@pageLoaderAnimation]='loader.state$ | async'>
-    <router-outlet></router-outlet>
+  <main [@routeAnimation]='prepareRoute(outlet)' [@pageLoaderAnimation]="loader.state$ | async">
+    <router-outlet #outlet="outlet"></router-outlet>
   </main>
 
-  <mat-spinner class="app-page-loader-spinner" color="accent" [@pageLoaderSpinnerAnimation]='loader.state$ | async'></mat-spinner>
+  <mat-spinner class="app-page-loader-spinner" color="accent" [@pageLoaderSpinnerAnimation]="loader.state$ | async"></mat-spinner>
 </div>

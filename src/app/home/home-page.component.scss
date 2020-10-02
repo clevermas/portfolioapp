@@ -7,8 +7,7 @@ $min-width: 250px;
     display: none;
 
     &.img-loaded + .backdrop-image {
-      opacity: 1;
-      transform: scale(1.05);
+      //transform: scale(1.05);
     }
   }
 
@@ -26,8 +25,12 @@ $min-width: 250px;
     background-image: url('../../assets/img/contact-backdrop.png');
     background-size: cover;
 
-    opacity: 0;
-    transition: opacity .3s ease-in-out, scale 4s linear;
+    //opacity: 0;
+
+    &.ng-animate-queued {
+      opacity: 0;
+    }
+    //transition: opacity .3s ease-in-out, scale 4s linear;
   }
 
   &-overlay {
