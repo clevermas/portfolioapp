@@ -7,7 +7,10 @@ import { HomePageComponent } from './home/home-page.component';
 const appRoutes: Routes = [
   {
     path: '',
-    component: HomePageComponent
+    component: HomePageComponent,
+    data: {
+      animation: 'HomePage'
+    }
   }
 ];
 

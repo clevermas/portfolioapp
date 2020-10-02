@@ -8,8 +8,7 @@ import { GalleryListComponent } from './components/list/gallery-list.component';
 import { GalleryPageComponent } from './gallery-page.component';
 import { GalleryListPageComponent } from './components/list-page/gallery-list-page.component';
 import { SharedModule } from '../shared/shared.module';
-import { MatButtonModule } from '@angular/material';
-
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   imports: [

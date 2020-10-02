@@ -1,4 +1,4 @@
-import { Component, HostBinding, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Observable } from 'rxjs';
@@ -8,18 +8,13 @@ import { GalleryService } from '../../services/gallery.service';
 import { PageLoaderService } from '../../../core/page-loader/page-loader.service';
 import { GalleryItemModel } from '../item/gallery-item.model';
 
-import { routeChangeCustomAnimation } from '../../../shared/animations/routeChangeCustom.animation';
-
 @Component({
   selector: 'app-gallery-item-page',
   templateUrl: './gallery-item-page.component.html',
   styleUrls: ['./gallery-item-page.component.scss'],
-  animations: [routeChangeCustomAnimation]
 })
 
 export class GalleryItemPageComponent implements OnInit, OnDestroy {
-  @HostBinding('@routeChangeCustomAnimation') triggerAnimation;
-
   item$: Observable<GalleryItemModel>;
   id: number;
 
