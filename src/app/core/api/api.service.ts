@@ -1,32 +1,18 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http, Response } from '@angular/http';
-import 'rxjs/add/operator/finally';
-import { Subject } from 'rxjs/Subject';
 
-@Injectable()
+import { HttpClient } from '@angular/common/http';
+import { of } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
 export class API {
 
-  constructor(private http: Http) {}
+  constructor(private http: HttpClient) {
+  }
 
-  get(url, { mocked = false, mockedData = {}}) {
-    let getSubject = new Subject<any>();
-
-    if (mocked)
-    {
-      setTimeout(() =>
-      {
-        getSubject.next(mockedData), 100
-        getSubject.complete();
-      });
-    }
-    else
-    {
-      this.http.get(url)
-          .finally(() => getSubject.complete())
-          .subscribe(res => getSubject.next(res));
-    }
-
-    return getSubject.asObservable();
+  get(url, {mocked = false, mockedData = {}}: { mocked: boolean, mockedData: any }) {
+    return mocked ? of(mockedData) : this.http.get(url);
   }
 
 }

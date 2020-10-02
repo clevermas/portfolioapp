@@ -1,0 +1,120 @@
+@import '../app.theming';
+
+$min-width: 250px;
+
+.backdrop {
+  &-preloader {
+    display: none;
+
+    &.img-loaded + .backdrop-image {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+  }
+
+  &-image, &-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &-image {
+    z-index: 1;
+
+    background-image: url('../../assets/img/contact-backdrop.png');
+    background-size: cover;
+
+    opacity: 0;
+    transition: opacity .3s ease-in-out, scale 4s linear;
+  }
+
+  &-overlay {
+    z-index: 2;
+    background: rgba($shutter-bg, .15);
+  }
+}
+
+.home-page {
+  display: flex;
+
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  text-align: center;
+
+  position: relative;
+  z-index: 2;
+
+  height: calc(100vh - 110px);
+
+  color: $primary-color-text;
+
+  padding-top: 52px;
+
+  .my-name {
+    font-size: 3em;
+    font-weight: 100;
+    color: currentColor;
+    text-transform: uppercase;
+  }
+
+  .slug {
+    font-weight: 100;
+  }
+
+  .hash-tags {
+    display: inline-flex;
+    justify-content: space-between;
+    min-width: $min-width;
+
+    i {
+      font-weight: 100;
+      font-style: normal;
+    }
+  }
+
+  .contact {
+    margin: 2em 0;
+    display: flex;
+    min-width: $min-width;
+    justify-content: space-between;
+
+    .fa {
+      display: inline-block;
+      text-decoration: none;
+      transition: color .2s linear;
+      color: $accent-color;
+
+      &:hover {
+        color: white;
+      }
+
+      &-skype {
+      }
+
+      &-envelope {
+      }
+
+      &-telegram {
+      }
+    }
+
+    .fa-upwork {
+      width: 3.4em;
+      height: 3.4em;
+      vertical-align: -9px;
+
+      svg {
+        fill: currentColor;
+        transition: fill .2s linear;
+
+        &:hover {
+          fill: white;
+        }
+      }
+
+    }
+  }
+}

@@ -1,0 +1,18 @@
+@mixin gallery-item-see-other-projects {
+  &.view-see-other-projects {
+    figcaption {
+      @media (min-width: 768px) {
+        font-size: 14px !important;
+      }
+    }
+    .item-small-preview {
+      max-width: 400px;
+      margin: auto;
+      &:hover {
+        &:after {
+          background: rgba(0, 0, 0, 0.75);
+        }
+      }
+    }
+  }
+}

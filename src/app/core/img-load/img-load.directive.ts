@@ -7,23 +7,23 @@ export class ImgLoadDirective implements OnChanges {
   private imgLoadedClass = 'img-loaded';
 
   @Input('app-img-load')
-    src:string;
+  src: string;
 
-  constructor(private element:ElementRef, private renderer:Renderer2) {
+  constructor(private element: ElementRef, private renderer: Renderer2) {
   }
 
   onLoaded = () => {
     this.addClass(this.imgLoadedClass);
-  }
+  };
 
   updateSrc(src) {
     let el = this.element.nativeElement;
     if (el.tagName === 'IMG' && src) {
       el.src = src;
       this.addClass('app-img-load');
-      if (el.complete)
+      if (el.complete) {
         this.onLoaded();
-      else {
+      } else {
         this.removeClass(this.imgLoadedClass);
         el.removeEventListener('load', this.onLoaded);
         el.addEventListener('load', this.onLoaded);
@@ -31,17 +31,17 @@ export class ImgLoadDirective implements OnChanges {
     }
   }
 
-  ngOnChanges(changes:{ [propertyName: string]: SimpleChange }) {
+  ngOnChanges(changes: { [propertyName: string]: SimpleChange }) {
     if (changes['src']) {
       this.updateSrc(changes['src'].currentValue);
     }
   }
 
-  addClass(className:string) {
+  addClass(className: string) {
     this.renderer.addClass(this.element.nativeElement, className);
   }
 
-  removeClass(className:string) {
+  removeClass(className: string) {
     this.renderer.removeClass(this.element.nativeElement, className);
   }
 

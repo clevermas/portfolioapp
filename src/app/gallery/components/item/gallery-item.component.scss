@@ -1,0 +1,73 @@
+@import "mixins";
+
+.gallery-item {
+  .item-preview {
+    cursor: pointer;
+  }
+
+  @include gallery-item-view-default;
+  @include gallery-item-view-small-preview;
+  @include gallery-item-see-other-projects;
+
+  // Group of views:
+  // - Small Preview View;
+  // - See Other View;
+  &.view-small-preview, .view-see-other-projects {
+    .item-description {
+      display: none;
+    }
+
+    .item-small-preview {
+      position: relative;
+      display: block;
+
+      img {
+        display: block;
+        width: 100%;
+      }
+
+      figcaption {
+        display: block;
+        position: absolute;
+        z-index: 200;
+
+        top: 50%;
+        left: 0;
+        width: 100%;
+
+        text-align: center;
+
+        transform: translate3d(0, -150%, 0);
+        opacity: 0;
+        transition: all .3s .1s ease-in-out;
+
+        color: #fff;
+        font-size: 24px;
+        font-weight: 300;
+      }
+
+      &:hover {
+        figcaption {
+          opacity: 1;
+          transform: translate3d(0, -50%, 0);
+        }
+      }
+
+      &:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        cursor: pointer;
+
+        transition: all .3s ease-out;
+        z-index: 100;
+      }
+
+    }
+
+  }
+
+}

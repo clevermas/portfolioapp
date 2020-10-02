@@ -1,0 +1,46 @@
+.portfolio-project-list {
+  &.small-preview {
+    section {
+      display: flex;
+      flex-flow: row wrap;
+      margin: 0 auto;
+      max-width: 1614px;
+
+      app-gallery-item {
+        display: block;
+        width: 49.5%;
+        margin: .25%;
+      }
+
+      @media (min-width: 610px) {
+        app-gallery-item {
+          width: 32.5%;
+        }
+      }
+      @media (min-width: 1200px) {
+        app-gallery-item {
+          width: 24.75%;
+          margin: .125%;
+        }
+      }
+    }
+  }
+
+  &.see-other-projects {
+    .ngxcarousel-inner {
+      margin: 0 4em;
+    }
+    .leftRs, .rightRs {
+      z-index: 2;
+      outline: none !important;
+      box-shadow: none;
+      border: none;
+      background: none;
+      font-size: 36px;
+      font-weight: 100;
+      line-height: 1;
+      color: #6b6b6b;
+      cursor: pointer;
+    }
+  }
+}

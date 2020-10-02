@@ -1,0 +1,32 @@
+<div class="gallery-item" [ngClass]="viewClass">
+
+  <section *ngIf="view === 'default'">
+    <div class="item-content-wrapper">
+      <div class="item-description">
+        <h1>{{ item?.name }}</h1>
+
+        <p>{{ item?.description }}</p>
+
+        <a class="btn-visit" href="{{ item?.url }}" target="_blank" mat-raised-button color="accent" *ngIf="item?.url">Visit</a>
+      </div>
+
+      <ng-content select=".item-footer"></ng-content>
+    </div>
+
+    <div class="item-preview">
+      <figure>
+        <img src="" [app-img-load]="item?.thumbnails?.large"/>
+      </figure>
+    </div>
+  </section>
+
+  <section *ngIf="view === 'small-preview' || view === 'see-other-projects'">
+    <a [routerLink]="[item?.id]"
+       class="item-small-preview">
+      <figure>
+        <img src="{{ item?.thumbnails?.medium }}"/>
+        <figcaption>{{ item?.name }}</figcaption>
+      </figure>
+    </a>
+  </section>
+</div>
